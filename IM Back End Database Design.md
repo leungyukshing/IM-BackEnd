@@ -22,14 +22,15 @@ I store most of the application's data on backend database. There are tables, in
 
 This table is used to store user information
 
-| Name     | Type    | Key         | Note                      |
-| -------- | ------- | ----------- | ------------------------- |
-| id       | int     | primary key | user id(auto increment)   |
-| username | varchar |             | username                  |
-| password | varchar |             | password                  |
-| avatar   | varchar |             | user's avatar             |
-| email    | varchar |             | user's email              |
-| time     | varchar |             | when this user is created |
+| Name       | Type    | Key         | Note                      |
+| ---------- | ------- | ----------- | ------------------------- |
+| id         | int     | primary key | user id(auto increment)   |
+| username   | varchar |             | username                  |
+| password   | varchar |             | password                  |
+| avatar     | varchar |             | user's avatar             |
+| email      | varchar |             | user's email              |
+| time       | varchar |             | when this user is created |
+| encryptkey | varchar |             | key used to encrypt info  |
 
 ### friend
 
