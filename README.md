@@ -8,6 +8,7 @@ This is the BE of IM.
 + [BackEnd Data Transportation Design](https://github.com/leungyukshing/IM-BackEnd/blob/master/IM%20BackEnd%20Data%20Transportation%20Design.md)
 + [BackEnd Package Control Design](https://github.com/leungyukshing/IM-BackEnd/blob/master/IM%20BackEnd%20Package%20Control%20Design.md)
 + [BackEnd Framework Investigation](https://github.com/leungyukshing/IM-BackEnd/blob/master/IM%20BackEnd%20Framwork%20Investigation.md)
++ [BackEnd CI Design](https://github.com/leungyukshing/IM-BackEnd/blob/master/IM%20BackEnd%20CI%20Design.md)
 
 ---
 
