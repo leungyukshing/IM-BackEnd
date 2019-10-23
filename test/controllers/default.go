@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"Test/models"
+	"github.com/backend/test/models"
 	"github.com/astaxie/beego"
 )
 

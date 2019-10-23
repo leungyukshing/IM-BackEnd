@@ -34,12 +34,12 @@ func (users AdminUser)ValidateUser() error {
 		fmt.Println("open db error ", err)
 	}
 	db.SingularTable(true)
-	var u *AdminUser
-	//fmt.Printf("%v",*u,users.UserName,users.Password)
-	db.Where("username = ? AND password = ?", users.UserName, users.Password).Find(u)
-	//orm.Where("username=? and password=?", user.UserName, user.Password).Find(&u)
-	//fmt.Printf("%v%s%s",*u,*u.UserName,*u.Password)
-	if u.UserName == "" {
+	var u []AdminUser
+	db.Where("user_name = ?", users.UserName).First(&u)
+
+	temp := u[0]
+	fmt.Printf("u: %v, u.Username: %v, u.Password: %v", temp, temp.UserName, temp.Password)
+	if u[0].UserName == "" {
 		return errors.New("用户名或密码错误！")
 	}
 	return nil

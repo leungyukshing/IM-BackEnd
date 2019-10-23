@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"Test/models"
+	"github.com/backend/test/models"
 	"fmt"
 )
 
@@ -14,7 +14,8 @@ func (c *MainController) LoginCheck() {
 	inputs := c.Input()
 	user.UserName = inputs.Get("username")
 	user.Password = inputs.Get("password")
-	//fmt.Println(inputs)
+	fmt.Printf("input: %v", inputs)
+	fmt.Printf("user: %v", user)
 	err := user.ValidateUser()
 	if err == nil {
 		c.SetSession("name", user)
