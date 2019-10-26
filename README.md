@@ -9,6 +9,7 @@ This is the BE of IM.
 + [BackEnd Package Control Design](https://github.com/leungyukshing/IM-BackEnd/blob/master/IM%20BackEnd%20Package%20Control%20Design.md)
 + [BackEnd Framework Investigation](https://github.com/leungyukshing/IM-BackEnd/blob/master/IM%20BackEnd%20Framwork%20Investigation.md)
 + [BackEnd CI Design](https://github.com/leungyukshing/IM-BackEnd/blob/master/IM%20BackEnd%20CI%20Design.md)
++ [BackEnd Gorm Issues](https://github.com/leungyukshing/IM-BackEnd/blob/master/IM%20BackEnd%20Gorm%20Issues.md)
 
 ---
 
@@ -16,3 +17,6 @@ This is the BE of IM.
 
 - 2019.8.23: Init
 - 2019.10.13: Discuss the data type and structure of backend. Use `dep` to manage project.
+- 2019.10.22: create branch `test` to connect DB
+- 2019.10.24: connect DB successful
+- 2019.10.25: confirm PB about login and register functiions.
