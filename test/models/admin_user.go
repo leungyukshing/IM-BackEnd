@@ -18,7 +18,7 @@ var(
 
 type AdminUser struct {
 	Id int
-	UserName string
+	Username string
 	Password string
 	Email string
 	Author int
@@ -35,11 +35,13 @@ func (users AdminUser)ValidateUser() error {
 	}
 	db.SingularTable(true)
 	var u []AdminUser
-	db.Where("user_name = ?", users.UserName).First(&u)
-
+	db.Where("username = ?", users.Username).First(&u)
+	if (len(u) == 0) {
+		return errors.New("User not existed")
+	}
 	temp := u[0]
-	fmt.Printf("u: %v, u.Username: %v, u.Password: %v", temp, temp.UserName, temp.Password)
-	if u[0].UserName == "" {
+	fmt.Printf("u: %v, u.Username: %v, u.Password: %v", temp, temp.Username, temp.Password)
+	if u[0].Username == "" {
 		return errors.New("用户名或密码错误！")
 	}
 	return nil

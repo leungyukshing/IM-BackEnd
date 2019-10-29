@@ -16,7 +16,7 @@ func (this *MainController) Get() {
 		this.Redirect("/login",301)    //跳转到登录逻辑
 	} else {
 		user := sess.(models.AdminUser)
-		this.Data["user"] = user.UserName    //用于向前端页面传送数据
+		this.Data["user"] = user.Username    //用于向前端页面传送数据
 		this.Data["pass"] = user.Password
 		this.TplName = "succeed.html"    //渲染succeed.html页面
 	}
