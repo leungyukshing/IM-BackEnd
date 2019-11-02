@@ -32,3 +32,5 @@ check-in the `vendor/vendor/json` file.
 6. [go mod Usage1](https://segmentfault.com/a/1190000019314903)
 7. [go mod Usage2](https://blog.csdn.net/jinyidong/article/details/87117892)
 8. [go mod docs](https://blog.golang.org/using-go-modules)
+9. [Go official comparison](https://github.com/golang/go/wiki/PackageManagementTools)
+
