@@ -24,6 +24,7 @@ CREATE TABLE `friend` (
 CREATE TABLE `chat` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `userid` int(11) NOT NULL,
+  `chatname` varchar(32) NOT NULL,
   `create_time` datetime DEFAULT NULL,
   `last_update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
