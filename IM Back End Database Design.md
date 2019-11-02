@@ -52,7 +52,8 @@ This table is used to store chat list.
 | Name             | Type    | Key         | Note                                                         |
 | ---------------- | ------- | ----------- | ------------------------------------------------------------ |
 | id               | int     | primary key | auto increment, used to locate all records belong to this chat |
-| user_id          | int     |             |                                                               |
+| user_id          | int     |             | to indicate who start this chat |
+| chat_name | varchar | | chat name |
 | create_time      | datetime |             | When this chat is created                                    |
 | last_update_time | datetime |             | when this chat is last updated(can be used to sort chat list) |
 
