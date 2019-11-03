@@ -10,9 +10,10 @@ func (c *MainController) Login() {
 }
 
 func (c *MainController) LoginCheck() {
+	//proto.unmarshal(c.Ctx.Input.RequestBody, req)
 	var user models.AdminUser
 	inputs := c.Input()
-	user.UserName = inputs.Get("username")
+	user.Username = inputs.Get("username")
 	user.Password = inputs.Get("password")
 	fmt.Printf("input: %v", inputs)
 	fmt.Printf("user: %v", user)

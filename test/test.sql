@@ -1,10 +1,31 @@
+
 CREATE TABLE `admin_user` (
-  `id` int(3) unsigned NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(32) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `email` varchar(32) DEFAULT NULL,
-  `author` int(1) NOT NULL DEFAULT '1',
+ `email` varchar(32) NOT NULL,
+  `time` datetime DEFAULT NULL,
+  `encryptkey` varchar(32) ,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
  
-INSERT INTO `admin_user` VALUES ('1', 'admin', 'admin', 'admin@qq.com', '1');
+INSERT INTO `admin_user` VALUES ('1', 'admin', 'admin', 'admin@qq.com',NULL,NULL);
+
+
+CREATE TABLE `friend` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `userid1` int(11) NOT NULL,
+  `userid2` int(11) NOT NULL,
+  `time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+ 
+
+CREATE TABLE `chat` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `userid` int(11) NOT NULL,
+  `chatname` varchar(32) NOT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `last_update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
