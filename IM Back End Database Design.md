@@ -47,7 +47,7 @@ This table is used to store friends relationship among users. We use bi-relation
 
 ### chat
 
-This table is used to store chat list.
+This table is used to store chat detail information.
 
 | Name             | Type    | Key         | Note                                                         |
 | ---------------- | ------- | ----------- | ------------------------------------------------------------ |
@@ -58,6 +58,16 @@ This table is used to store chat list.
 | create_time      | datetime |             | When this chat is created                                    |
 | last_update_time | datetime |             | when this chat is last updated(can be used to sort chat list) |
 
+## chat_user_ref
+
+This table is used to store the relationship between chat and user. That is, indicates the participants of a chat.
+
+| Name    | Type | Key         | Note                    |
+| ------- | ---- | ----------- | ----------------------- |
+| id      | int  | primary key | auto increment          |
+| chat_id | int  |             | reference to chat table |
+| user_id | int  |             | participant of the chat |
+
 ---
 
 ## Reference
@@ -65,3 +75,4 @@ This table is used to store chat list.
 1. [How to store picture in database](https://blog.csdn.net/Cs_hnu_scw/article/details/74011674)
 2. [Database Framework in Golang](https://juejin.im/entry/59b243a3f265da24754db898)
 3. [Data encryption](https://blog.csdn.net/wade3015/article/details/84454836)
+4. [IM Database Design Example](https://juejin.im/post/5bcf3d4e51882577c758d0df)
