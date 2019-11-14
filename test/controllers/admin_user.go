@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"github.com/backend/test/models"
 	"fmt"
+	"github.com/backend/test/models"
 )
 
 func (c *MainController) Login() {
@@ -20,7 +20,7 @@ func (c *MainController) LoginCheck() {
 	err := user.ValidateUser()
 	if err == nil {
 		c.SetSession("name", user)
-		c.Redirect("/",301)
+		c.Redirect("/", 301)
 	} else {
 		fmt.Println(err)
 		c.Data["info"] = err
@@ -30,5 +30,5 @@ func (c *MainController) LoginCheck() {
 
 func (c *MainController) Out() {
 	c.DelSession("name")
-	c.Redirect("/",301)
+	c.Redirect("/", 301)
 }
