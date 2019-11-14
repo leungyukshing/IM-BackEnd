@@ -3,11 +3,9 @@ package main
 import (
 	"github.com/astaxie/beego"
 	_ "github.com/backend/test/routers"
-	log "github.com/sirupsen/logrus"
-	"os"
 )
 
-func init() {
+/*func init() {
 	// 设置日志格式为json格式
 	log.SetFormatter(&log.JSONFormatter{})
 
@@ -17,10 +15,10 @@ func init() {
 
 	// 设置日志级别为warn以上
 	log.SetLevel(log.WarnLevel)
-}
+}*/
 
 func main() {
-
+/*
 	log.WithFields(log.Fields{
 		"animal": "walrus",
 		"size":   10,
@@ -29,7 +27,6 @@ func main() {
 	log.WithFields(log.Fields{
 		"omg":    true,
 		"number": 122,
-	}).Warn("The group's number increased tremendously!")
-
+	}).Warn("The group's number increased tremendously!")*/
 	beego.Run()
 }

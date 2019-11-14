@@ -1,0 +1,22 @@
+language: go
+
+services:
+  - docker
+
+install:
+  - echo "install"
+  - pwd
+
+script:
+  - echo "script"
+  - pwd
+  - go version
+  - go vet
+
+
+after_success:
+#  - chmod 600 ~/.ssh/id_rsa   #还是Linux文件权限问题
+  - ssh root@139.199.103.169 -o StrictHostKeyChecking=no "cd /root/go/src/github.com/backend/test && chmod +x ./citest.sh && ./citest.sh"
+
+addons:
+  ssh_known_hosts: 139.199.103.169
