@@ -27,7 +27,7 @@
   branch = "master"
   name = "github.com/gopherjs/gopherjs"
   packages = ["js"]
-  revision = "d3ddacdb130fcd23f77a827e3b599804730be6b5"
+  revision = "ce3c9ade29deed38a85f259f40e823cc17213830"
 
 [[projects]]
   name = "github.com/jinzhu/gorm"
@@ -49,6 +49,12 @@
   packages = ["."]
   revision = "b4936e06046bbecbb94cae9c18127ebe510a2cb9"
   version = "v4.20"
+
+[[projects]]
+  name = "github.com/sirupsen/logrus"
+  packages = ["."]
+  revision = "418b41d23a1bf978c06faea5313ba194650ac088"
+  version = "v0.8.7"
 
 [[projects]]
   name = "github.com/smartystreets/assertions"
@@ -74,6 +80,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "a3d4a91fce26cca3ff15ba609bcf62c23e6bccdad28db64e6be58ca94ce63d53"
+  inputs-digest = "a867d71475af41eb4ba179fd41a65fa9507d08c59a0a1b8309281980c40df36a"
   solver-name = "gps-cdcl"
   solver-version = 1
