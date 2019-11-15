@@ -1,0 +1,17 @@
+version: "2"
+services:
+  ci:
+    build: .
+    working_dir: /opt/gopath/src/github.com/backend/test
+    volumes:
+      - ..:/opt/gopath/src/github.com/backend/test
+    environment:
+      ENV: ci
+      GO15VENDOREXPERIMENT: "1"
+      GOPATH: /opt/gopath
+    image: golang:1.12
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: ci
+      MYSQL_ROOT_PASSWORD: ci

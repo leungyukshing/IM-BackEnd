@@ -10,15 +10,16 @@ EXIT_CODE=0
 
 if [[ $? -eq 0 ]]
 then
-  DOCKER_COMPOSE="env docker-compose -f docker-compose.ci.yml -p ci"
-  ${DOCKER_COMPOSE} up -d mysql
+  DOCKER_COMPOSE="env docker-compose -f docker-compose.yml -p ci"
+  ${DOCKER_COMPOSE} up -d mysql ci
 
   until ${DOCKER_COMPOSE} exec -T mysql mysql -uroot -pci -e "show processlist"; do
     sleep 10;
   done
 
-  ${DOCKER_COMPOSE} run --rm ci bash ./bin/run-ci
+  ${DOCKER_COMPOSE} run --rm ci bash ./bin/run-ci.sh
   EXIT_CODE=$?
+  # ${DOCKER_COMPOSE} down -v
 fi
 
 if [[ ${EXIT_CODE} == 0 ]];then
