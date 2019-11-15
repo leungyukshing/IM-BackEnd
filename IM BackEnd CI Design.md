@@ -34,6 +34,18 @@ I'd like to cover the following things in CI:
 
 ---
 
+## Issues
+
+1. docker report error: "Drive has not been shared"
+
+   solution: https://blog.csdn.net/weixin_34217773/article/details/93723827
+
+2. '\r' syntax error in shell files on windows platform
+
+   solution: https://blog.csdn.net/u013223806/article/details/74453059
+
+---
+
 ## Reference
 
 1. [Travis for CI in Github](https://maiyang.me/post/2017-06-17-github-travis-ci-coveralls/)
