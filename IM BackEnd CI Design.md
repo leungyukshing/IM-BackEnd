@@ -24,11 +24,10 @@ I'd like to cover the following things in CI:
 
 1. [Travis for CI in Github](https://maiyang.me/post/2017-06-17-github-travis-ci-coveralls/)
 2. [Travis Docs](https://docs.travis-ci.com/user/languages/go/)
-
 3. [go vet](https://golang.org/cmd/vet/)
 4. [go vet(CN)](https://studygolang.com/articles/9619)
 5. [go cover](https://golang.org/cmd/cover/)
 6. [go test framework](https://golang.org/pkg/testing/)
 7. [travis Ci for Github](https://lingxiankong.github.io/2018-06-28-travis-ci-integration.html)
 8. [watching git commit message](https://www.npmjs.com/package/git-commit-msg-linter)
-
+9. [commit message in travis](https://segmentfault.com/a/1190000021007124?utm_source=tag-newest)
