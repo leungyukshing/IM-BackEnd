@@ -2,11 +2,11 @@ package routers
 
 import (
 	"github.com/astaxie/beego"
-	"github.com/backend/controllers"
+	"github.com/backend/service"
 )
 
 func init() {
-	beego.Router("/", &controllers.MainController{})
-	beego.Router("/login", &controllers.MainController{}, "post:Login")
-	beego.Router("/out", &controllers.MainController{}, "post:Out")
+	beego.Router("/", &service.Handler{})
+	beego.Router("/login", &service.Handler{}, "post:Login")
+	beego.Router("/out", &service.Handler{}, "post:Out")
 }

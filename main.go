@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/astaxie/beego"
+	"github.com/backend/database"
 	_ "github.com/backend/routers"
 )
 
@@ -28,5 +29,6 @@ func main() {
 			"omg":    true,
 			"number": 122,
 		}).Warn("The group's number increased tremendously!")*/
+	database.InitMySQL()
 	beego.Run()
 }

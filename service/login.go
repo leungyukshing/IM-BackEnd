@@ -1,4 +1,4 @@
-package controllers
+package service
 
 import (
 	"errors"
@@ -9,7 +9,7 @@ import (
 	"github.com/golang/protobuf/proto"
 )
 
-func (c *MainController) Login() {
+func (c *Handler) Login() {
 	loginRequest := im_entities.LoginRequest{}
 	proto.Unmarshal(c.Ctx.Input.RequestBody, &loginRequest)
 	loginResponse := handleLogin(*c.Ctx, loginRequest)
@@ -50,9 +50,9 @@ func verifyLoginUser(ctx context.Context, email string, password string) (im_ent
 	}, errors.New("test login")
 }
 
-func (c *MainController) LoginCheck() {
+func (c *Handler) LoginCheck() {
 	//proto.unmarshal(c.Ctx.Input.RequestBody, req)
-	var user models.AdminUser
+	var user database.AdminUser
 	inputs := c.Input()
 	user.Username = inputs.Get("username")
 	user.Password = inputs.Get("password")
@@ -69,7 +69,7 @@ func (c *MainController) LoginCheck() {
 	}
 }
 
-func (c *MainController) Out() {
+func (c *Handler) Out() {
 	c.DelSession("name")
 	c.Redirect("/", 301)
 }
