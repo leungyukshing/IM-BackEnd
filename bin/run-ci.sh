@@ -21,7 +21,7 @@ else
 fi
 
 # check go vet
-printf "4. go vet checking"
+printf "3. go vet checking"
 go vet ./...
 printf "go vet passed!"
 
