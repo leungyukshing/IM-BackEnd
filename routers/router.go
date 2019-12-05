@@ -6,7 +6,5 @@ import (
 )
 
 func init() {
-	beego.Router("/", &service.Handler{})
 	beego.Router("/login", &service.Handler{}, "post:Login")
-	beego.Router("/out", &service.Handler{}, "post:Out")
 }

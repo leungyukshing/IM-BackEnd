@@ -16,7 +16,7 @@ var (
 
 var Server *gorm.DB
 
-func InitMySQL()  {
+func InitMySQL() {
 	dsn := user + ":" + pass + "@tcp(" + url + ":" + port + ")/" + dbname + "?charset=utf8" + "&parseTime=True&loc=Local"
 	Server, err := gorm.Open("mysql", dsn)
 	if err == nil {

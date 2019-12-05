@@ -7,7 +7,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
-func ValidateUser(user entities.User) error {
+func ValidateUser(user *entities.User) error {
 	var u []entities.User
 	Server.Where("username = ?", user.Username).First(&u)
 	if len(u) == 0 {

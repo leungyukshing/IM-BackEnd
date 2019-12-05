@@ -17,9 +17,10 @@ var (
 )
 
 // All testing tables
-var tables = []interface{} {
+var tables = []interface{}{
 	&entities.User{},
 }
+
 func InitTestingMySQL() {
 	if database.Server == nil {
 		dsn := user + ":" + pass + "@tcp(" + url + ":" + port + ")/" + dbname + "?charset=utf8" + "&parseTime=True&loc=Local"
