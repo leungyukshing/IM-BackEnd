@@ -1,5 +1,6 @@
 package test
 
+/*
 import (
 	"net/http"
 	"net/http/httptest"
@@ -16,6 +17,7 @@ func init() {
 	apppath, _ := filepath.Abs(filepath.Dir(filepath.Join(file, ".." + string(filepath.Separator))))
 	beego.TestBeegoInit(apppath)
 }
+
 
 
 // TestBeego is a sample to run an endpoint test
@@ -36,3 +38,4 @@ func TestBeego(t *testing.T) {
 	})
 }
 
+*/

@@ -16,6 +16,7 @@ else
         printf "All Go files are formatted, great job! ✅"
     else
         printf "Go files must be formatted with gofmt. Please run: go fmt $unformatted first."
+        exit 1
     fi
 fi
 
@@ -58,4 +59,4 @@ do
 done
 
 go tool cover -func=coverage.out
-go tool cover -html=converage.out -o cover/database.html
+go tool cover -html=coverage.out -o cover/database.html

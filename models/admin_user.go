@@ -8,24 +8,24 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
-var(
-	user = beego.AppConfig.String("mysqluser")
-	pass = beego.AppConfig.String("mysqlpass")
-	url = beego.AppConfig.String("mysqlurl")
-	port = beego.AppConfig.String("mysqlport")
+var (
+	user   = beego.AppConfig.String("mysqluser")
+	pass   = beego.AppConfig.String("mysqlpass")
+	url    = beego.AppConfig.String("mysqlurl")
+	port   = beego.AppConfig.String("mysqlport")
 	dbname = beego.AppConfig.String("mysqldbname")
 )
 
 type AdminUser struct {
-	Id int
+	Id       int
 	Username string
 	Password string
-	Email string
-	Author int
+	Email    string
+	Author   int
 }
 
-func (users AdminUser)ValidateUser() error {
-	var db_info = user+":"+pass+"@tcp("+url+":"+port+")/"+dbname+"?charset=utf8"+"&parseTime=True&loc=Local"
+func (users AdminUser) ValidateUser() error {
+	var db_info = user + ":" + pass + "@tcp(" + url + ":" + port + ")/" + dbname + "?charset=utf8" + "&parseTime=True&loc=Local"
 	//orm := getLink(user.UserName, user.Password)    //获得用于操作数据库的orm
 	db, err := gorm.Open("mysql", db_info)
 	if err == nil {
@@ -36,7 +36,7 @@ func (users AdminUser)ValidateUser() error {
 	db.SingularTable(true)
 	var u []AdminUser
 	db.Where("username = ?", users.Username).First(&u)
-	if (len(u) == 0) {
+	if len(u) == 0 {
 		return errors.New("User not existed")
 	}
 	temp := u[0]

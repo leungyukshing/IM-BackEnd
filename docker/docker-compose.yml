@@ -2,9 +2,9 @@ version: "2"
 services:
   ci:
     build: .
-    working_dir: /opt/gopath/src/github.com/backend/test
+    working_dir: /opt/gopath/src/github.com/backend
     volumes:
-      - ..:/opt/gopath/src/github.com/backend/test
+      - ..:/opt/gopath/src/github.com/backend
     environment:
       ENV: ci
       GO15VENDOREXPERIMENT: "1"

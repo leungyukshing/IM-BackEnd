@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/astaxie/beego/context"
 	im_entities "github.com/backend/im-protobuf/improto"
-	"github.com/backend/test/models"
+	"github.com/backend/models"
 	"github.com/golang/protobuf/proto"
 )
 

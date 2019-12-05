@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/astaxie/beego"
-	_ "github.com/backend/test/routers"
+	_ "github.com/backend/routers"
 )
 
 /*func init() {
