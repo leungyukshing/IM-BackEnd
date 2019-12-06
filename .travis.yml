@@ -11,6 +11,7 @@ script:
   - echo "script"
   - pwd
   - go version
+  - chmod +x ./bin/run-test.sh
   - ./bin/run-test.sh
 
 after_success:
