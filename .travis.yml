@@ -1,24 +1,21 @@
 language: go
-
 services:
-  - docker
-
+- docker
 install:
-  - echo "install"
-  - pwd
-
+- echo "install"
+- pwd
 script:
-  - echo "script"
-  - pwd
-  - go version
-  - chmod +x ./bin/run-test.sh
-  - ./bin/run-test.sh
-
+- echo "script"
+- pwd
+- go version
+- chmod +x ./bin/run-test.sh
+- "./bin/run-test.sh"
 after_success:
-  - ssh-keygen -t rsa
-  - ssh-copy-id root@139.199.103.169
-  - chmod 700 ~/.ssh/   #还是Linux文件权限问题
-  - ssh root@139.199.103.169 -o StrictHostKeyChecking=no " cd /root/go/src/github.com/backend && git pull && chmod +x ./deploy.sh && ./deploy.sh"
-
+- ssh root@139.199.103.169 -o StrictHostKeyChecking=no -i ~/.ssh/rsa " cd /root/go/src/github.com/backend
+  && git pull && chmod +x ./deploy.sh && ./deploy.sh"
 addons:
   ssh_known_hosts: 139.199.103.169
+before_install:
+- openssl aes-256-cbc -K $encrypted_6a65b690ef40_key -iv $encrypted_6a65b690ef40_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa

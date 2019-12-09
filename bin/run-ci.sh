@@ -5,6 +5,39 @@ set -ex
 rm -rf cover
 mkdir cover
 
+feat="feat:[[:space:]].*$"
+fix="fix:[[:space:]].*$"
+test="test:[[:space:]].*$"
+chore="chore:[[:space:]].*$"
+
+commit_msg_reg=(
+  $feat
+  $fix
+  $test
+  $chore
+)
+
+# check commit message
+check_commit_msg () {
+  for regex in ${commit_msg_reg[*]}
+    do
+      if [[ $TRAVIS_COMMIT_MESSAGE =~ $regex ]]; then
+          printf "do match \n\n" "$TRAVIS_COMMIT_MESSAGE" "$regex ✅"
+          return 0
+      else
+        printf "does not match \n\n" "$TRAVIS_COMMIT_MESSAGE" "$regex ❗"
+      fi
+    done
+  return 1
+}
+
+check_commit_msg
+if [[ $? == 1 ]]
+then
+  printf "\n\n" "$TRAVIS_COMMIT_MESSAGE" "commit message failed match "
+  exit 1
+fi
+
 # check gofmt
 gofiles=$(git diff --diff-filter=ACM --name-only origin/master..HEAD | awk '!/vendor/ && /.go$/')
 printf "2. go fmt check"

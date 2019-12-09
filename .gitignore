@@ -2,3 +2,4 @@
 *.exe~
 coverage.out
 cover/
+id_rsa
