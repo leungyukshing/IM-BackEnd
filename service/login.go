@@ -41,6 +41,7 @@ func handleLogin(ctx context.Context, loginRequest im_entities.LoginRequest) im_
 
 func verifyLoginUser(ctx context.Context, email string, password string) (im_entities.User, error) {
 	// query in DB
+	// test can delete
 	email = "test@mail.com"
 
 	return im_entities.User{
