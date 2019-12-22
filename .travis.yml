@@ -12,7 +12,7 @@ script:
 - "./bin/run-test.sh"
 after_success:
 - ssh root@139.199.103.169 -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa " cd /root/go/src/github.com/backend
-  && git pull --force && chmod +x ./deploy.sh && ./deploy.sh"
+  && git pull --force && chmod 600 ./deploy.sh && ./deploy.sh"
 addons:
   ssh_known_hosts: 139.199.103.169
 before_install:
