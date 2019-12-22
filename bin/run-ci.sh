@@ -31,12 +31,12 @@ check_commit_msg () {
   return 1
 }
 
-check_commit_msg
-if [[ $? == 1 ]]
-then
-  printf "\n\n" "$TRAVIS_COMMIT_MESSAGE" "commit message failed match "
-  exit 1
-fi
+#check_commit_msg
+#if [[ $? == 1 ]]
+#then
+#  printf "\n\n" "$TRAVIS_COMMIT_MESSAGE" "commit message failed match "
+#  exit 1
+#fi
 
 # check gofmt
 gofiles=$(git diff --diff-filter=ACM --name-only origin/master..HEAD | awk '!/vendor/ && /.go$/')
