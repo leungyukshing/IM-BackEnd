@@ -6,5 +6,7 @@ import (
 )
 
 func init() {
+	// test api
+	beego.Router("/test", &service.Handler{}, "get:Test")
 	beego.Router("/login", &service.Handler{}, "post:Login")
 }

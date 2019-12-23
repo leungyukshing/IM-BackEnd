@@ -31,3 +31,4 @@ I'd like to cover the following things in CI:
 7. [travis Ci for Github](https://lingxiankong.github.io/2018-06-28-travis-ci-integration.html)
 8. [watching git commit message](https://www.npmjs.com/package/git-commit-msg-linter)
 9. [commit message in travis](https://segmentfault.com/a/1190000021007124?utm_source=tag-newest)
+10. [Travis CI Auto Deploy](https://segmentfault.com/a/1190000011218410)
