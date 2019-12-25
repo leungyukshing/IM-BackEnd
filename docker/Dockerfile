@@ -1,5 +1,5 @@
 ##FROM alpine:latest
-#FROM golang:latest
+FROM golang:latest
 ##设置工作目录
 #
 #RUN mkdir -p /go/src/github.com/backend
