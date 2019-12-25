@@ -1,15 +1,15 @@
 FROM golang:latest
 #设置工作目录
 
-# RUN mkdir -p /go/src/github.com/backend/test
+RUN mkdir -p /go/src/github.com/backend
 
-# WORKDIR /go/src/github.com/backend/test
+WORKDIR /go/src/github.com/backend
 #将服务器的go工程代码加入到docker容器中 路径要修改
-# COPY . /go/src/github.com/backend/test
+COPY . /go/src/github.com/backend/test
 
-# RUN go get github.com/astaxie/beego && go get github.com/beego/bee && go get github.com/go-sql-driver/mysql
+RUN go get github.com/astaxie/beego && go get github.com/beego/bee && go get github.com/go-sql-driver/mysql
 #暴露端口
-# EXPOSE 6064
+EXPOSE 3004
 #最终运行docker的命令
-# CMD ["bee","run"]
+CMD ["bee","run"]
 
