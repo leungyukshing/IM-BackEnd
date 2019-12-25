@@ -13,4 +13,4 @@ COPY . /go/src/github.com/backend
 EXPOSE 3004
 #最终运行docker的命令
 # CMD ["bee","run"]
-RUN cd backend && go run ./main.go
+RUN cd /go/src/github.com/backend && go run ./main.go
