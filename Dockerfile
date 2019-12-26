@@ -10,7 +10,7 @@ COPY . /go/src/github.com/backend
 
 #RUN go get github.com/astaxie/beego && go get github.com/beego/bee && go get github.com/go-sql-driver/mysql
 ##暴露端口
-EXPOSE 3004
+EXPOSE 8080
 #最终运行docker的命令
 ## CMD ["bee","run"]
 RUN pwd && cd /go/src/github.com/backend && pwd && ls && go run ./main.go
