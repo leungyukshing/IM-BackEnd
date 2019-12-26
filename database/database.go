@@ -20,7 +20,7 @@ func InitMySQL() {
 	dsn := user + ":" + pass + "@tcp(" + url + ":" + port + ")/" + dbname + "?charset=utf8" + "&parseTime=True&loc=Local"
 	Server, err := gorm.Open("mysql", dsn)
 	if err == nil {
-		fmt.Println("open db sucess")
+		fmt.Println("open db success")
 	} else {
 		panic(err)
 	}
