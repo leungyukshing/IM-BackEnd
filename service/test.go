@@ -1,3 +1,4 @@
+// This file is used to test API connection of this service
 package service
 
 import (

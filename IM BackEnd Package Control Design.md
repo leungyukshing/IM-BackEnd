@@ -1,6 +1,8 @@
 # IM BackEnd Package Control Design Doc
 
-**Date: **2019.10.13
+**Created Date: **2019.10.13
+
+**Last Updated:** 2020.02.06
 
 ## Goal
 
@@ -22,6 +24,13 @@ A module is a collection of Go packages stored in a file tree with a `go.mod` fi
 
 check-in the `vendor/vendor/json` file.
 
+## Solution
+
+Due to connection problems and reliability, we choose go mod as our tool for package control.
+
+1.  `export GO111MODULE=on` on Linux or `set GO111MODULE=on` on Windows.
+2. set proxy. We use [goproxy](https://goproxy.io/). `export GOPROXY=https://goproxy.io` on Linux or `set GOPROXY=https://goproxy.io` on Windows.
+
 ## Reference
 
 1. [Golang Package Control - dep](https://blog.csdn.net/huwh_/article/details/81170900)
@@ -32,3 +41,4 @@ check-in the `vendor/vendor/json` file.
 6. [go mod Usage1](https://segmentfault.com/a/1190000019314903)
 7. [go mod Usage2](https://blog.csdn.net/jinyidong/article/details/87117892)
 8. [go mod docs](https://blog.golang.org/using-go-modules)
+9. [goproxy](https://goproxy.io/)
