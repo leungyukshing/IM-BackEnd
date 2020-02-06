@@ -4,7 +4,7 @@ This document shows the blueprint of back-end database design of IM.
 
 ## Intro
 
-I store most information in backend database out of simplicity. In the basic version, I don't want to care much about data synchronization or multi-device synchronization. My goal is to make it work properly, care less about the transfer time. So I only store information in a remote server, wihout backup.
+I store most information in backend database out of simplicity. In the basic version, I don't want to care much about data synchronization or multi-device synchronization. My goal is to make it work properly, care less about the transfer time. So I only store information in a remote database, wihout backup.
 
 ---
 

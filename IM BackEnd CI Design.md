@@ -18,6 +18,13 @@ I'd like to cover the following things in CI:
 + go fmt: code format check.
 + check commit message
 
+## Steps
+
+1. use `docker-compose` to generate a docker for test, as well as we check commit message, code format and so on.
+2. we enter the remote server and download the latest code
+3. we generate a docker to run this service
+4. we enter the docker and run this server manually
+
 ---
 
 ## Reference

@@ -4,6 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/backend/database"
 	_ "github.com/backend/routers"
+	"github.com/sirupsen/logrus"
 )
 
 /*func init() {
@@ -31,4 +32,8 @@ func main() {
 		}).Warn("The group's number increased tremendously!")*/
 	database.InitMySQL()
 	beego.Run()
+}
+
+func initLogger() {
+
 }
