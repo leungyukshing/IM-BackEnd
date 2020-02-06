@@ -4,20 +4,10 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/backend/database"
 	_ "github.com/backend/routers"
+	"github.com/gemnasium/logrus-graylog-hook"
 	"github.com/sirupsen/logrus"
+	"os"
 )
-
-/*func init() {
-	// 设置日志格式为json格式
-	log.SetFormatter(&log.JSONFormatter{})
-
-	// 设置将日志输出到标准输出（默认的输出为stderr,标准错误）
-	// 日志消息输出可以是任意的io.writer类型
-	log.SetOutput(os.Stdout)
-
-	// 设置日志级别为warn以上
-	log.SetLevel(log.WarnLevel)
-}*/
 
 func main() {
 	/*
@@ -30,10 +20,19 @@ func main() {
 			"omg":    true,
 			"number": 122,
 		}).Warn("The group's number increased tremendously!")*/
+	initLogger()
 	database.InitMySQL()
 	beego.Run()
 }
 
 func initLogger() {
-
+	var addr string
+	if env := os.Getenv("ENV"); env == "product" {
+		addr = "47.100.58.6:12201"
+	} else {
+		addr = "127.0.0.1:12201"
+	}
+	hook := graylog.NewGraylogHook(addr, map[string]interface{}{"service": "im-backend", "ENV": os.Getenv("ENV")})
+	logrus.AddHook(hook)
+	logrus.Info("initLogger")
 }

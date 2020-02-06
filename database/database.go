@@ -5,6 +5,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 	"github.com/jinzhu/gorm"
+	"os"
 )
 
 var (
@@ -18,9 +19,17 @@ var (
 var Server *gorm.DB
 
 func InitMySQL() {
-	dsn := user + ":" + pass + "@tcp(" + url + ":" + port + ")/" + dbname + "?charset=utf8" + "&parseTime=True&loc=Local"
-	logs.Info("dsn: %v", dsn)
-	Server, err := gorm.Open("mysql", dsn)
+	var err error
+	if env := os.Getenv("ENV"); env == "product" {
+		dsn := user + ":" + pass + "@tcp(" + url + ":" + port + ")/" + dbname + "?charset=utf8" + "&parseTime=True&loc=Local"
+		logs.Info("Product ENV dsn: %v", dsn)
+		Server, err = gorm.Open("mysql", dsn)
+	} else {
+		dsn := "root:******@tcp(127.0.0.1:3306)/gotest?charset=utf8&parseTime=True&loc=Local"
+		logs.Info("Dev ENV dsn: %v", dsn)
+		Server, err = gorm.Open("mysql", dsn)
+	}
+
 	if err == nil {
 		fmt.Println("open db success")
 	} else {
