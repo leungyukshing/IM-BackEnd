@@ -10,8 +10,8 @@ COPY . /go/src/github.com/backend
 
 # Set Environment Variables
 ENV ENV=product
-    GO111MODULE=on
-    GOPROXY=https://goproxy.io
+#    GO111MODULE=on
+#    GOPROXY=https://goproxy.io
 
 # Expose Port
 EXPOSE 9000
