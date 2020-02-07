@@ -21,12 +21,6 @@ func main() {
 }
 
 func initLogger() {
-	//var addr string
-	//if env := os.Getenv("ENV"); env == "product" {
-	//	addr = conf.Conf.GraylogAddr
-	//} else {
-	//	addr = conf.Conf
-	//}
 	addr := conf.Conf.GraylogAddr
 	hook := graylog.NewGraylogHook(addr, map[string]interface{}{"service": "im-backend", "ENV": os.Getenv("ENV")})
 	logrus.AddHook(hook)
