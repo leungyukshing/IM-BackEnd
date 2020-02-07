@@ -1,4 +1,0 @@
-mysqlDsn: "root:******@tcp(127.0.0.1:3306)/gotest?charset=utf8&parseTime=True&loc=Local"
-graylog: "127.0.0.1:12201"
-# mysqlDsn: im_user:test1234@tcp(cdb-ry07ms94.cd.tencentcdb.com:10038)/gotest?charset=utf8&parseTime=True&loc=Local
-# graylog: 47.100.58.6:12201
