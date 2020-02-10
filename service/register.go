@@ -73,7 +73,6 @@ func handleRegister(ctx context.Context, registerRequest im_entities.RegisterReq
 			registerResponse.Message = &message
 		}
 	}
-	return registerResponse, nil
 	log.Info("handleRegister finish")
 	return registerResponse, nil
 }

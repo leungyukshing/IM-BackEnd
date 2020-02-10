@@ -9,12 +9,14 @@ feat="feat:[[:space:]].*$"
 fix="fix:[[:space:]].*$"
 test="test:[[:space:]].*$"
 chore="chore:[[:space:]].*$"
+doc="doc:[[:space:]].*$"
 
 commit_msg_reg=(
   $feat
   $fix
   $test
   $chore
+  $doc
 )
 
 # check commit message
@@ -31,12 +33,12 @@ check_commit_msg () {
   return 1
 }
 
-#check_commit_msg
-#if [[ $? == 1 ]]
-#then
-#  printf "\n\n" "$TRAVIS_COMMIT_MESSAGE" "commit message failed match "
-#  exit 1
-#fi
+check_commit_msg
+if [[ $? == 1 ]]
+then
+  printf "\n\n" "$TRAVIS_COMMIT_MESSAGE" "commit message failed match "
+  exit 1
+fi
 
 # check gofmt
 gofiles=$(git diff --diff-filter=ACM --name-only origin/master..HEAD | awk '!/vendor/ && /.go$/')
