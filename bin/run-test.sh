@@ -24,8 +24,8 @@ fi
 
 if [[ ${EXIT_CODE} == 0 ]];then
   echo "SUCCESS"
-  return 0
+  exit 0
 else
   echo "FAIL"
-  return 1
+  exit 1
 fi
