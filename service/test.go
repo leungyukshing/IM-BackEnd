@@ -6,11 +6,11 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func (this *Handler) Test() {
-	ctx := *(this.Ctx)
+func (handler *Handler) Test() {
+	ctx := *(handler.Ctx)
 	log := logger(ctx)
 	log.Info("Test start")
-	this.Ctx.Output.Body([]byte("connection success"))
+	handler.Ctx.Output.Body([]byte("connection success"))
 }
 
 func logger(ctx context.Context) *logrus.Entry {

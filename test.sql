@@ -1,5 +1,5 @@
 
-CREATE TABLE `admin_user` (
+CREATE TABLE `user` (
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
     `username` varchar(32) NOT NULL,
     `password` varchar(32) NOT NULL,

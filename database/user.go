@@ -1,22 +1,47 @@
 package database
 
 import (
-	"errors"
-	"fmt"
 	"github.com/backend/database/entities"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"time"
 )
 
-func ValidateUser(user *entities.User) error {
-	var u []entities.User
-	Server.Where("username = ?", user.Username).First(&u)
-	if len(u) == 0 {
-		return errors.New("User Not Existed")
+func ValidateLogin(email string, password string) (bool, entities.User, error) {
+	var u entities.User
+	db := Server.Where("email = ?", email).First(&u)
+	if db.Error != nil {
+		return false, u, db.Error
 	}
-	temp := u[0]
-	fmt.Printf("u: %v, u.Username: %v, u.Password: %v", temp, temp.Username, temp.Password)
-	if u[0].Username == "" {
-		return errors.New("用户名或密码错误！")
+	if u.Password != password {
+		return false, u, nil
+	}
+	return true, u,nil
+}
+
+func IsUserExisted(email string) (bool, error) {
+	var u []entities.User
+	db := Server.Where("email = ?", email).First(&u)
+	if db.Error != nil {
+		return false, db.Error
+	}
+	if len(u) == 0 {
+		return false, nil
+	} else {
+		return true, nil
+	}
+}
+
+func AddUser(username string, password string, email string) error {
+	user := entities.User{
+		Username:    username,
+		Password:    password,
+		Email:       email,
+		CreatedTime: time.Now(),
+		EncryptKey:  "",
+	}
+	db := Server.Create(&user)
+	if db.Error != nil {
+		return db.Error
 	}
 	return nil
 }
