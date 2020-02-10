@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-TRAVIS_COMMIT_MESSAGE = $1
-printf "hh: $TRAVIS_COMMIT_MESSAGE"
+TRAVIS_COMMIT_MESSAGE=$1
+printf "$TRAVIS_COMMIT_MESSAGE"
 set -ex
 
 rm -rf cover
