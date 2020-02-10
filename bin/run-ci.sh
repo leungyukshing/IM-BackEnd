@@ -21,7 +21,7 @@ commit_msg_reg=(
 
 # check commit message
 check_commit_msg () {
-  printf $TRAVIS_COMMIT_MESSAGE
+  printf "$TRAVIS_COMMIT_MESSAGE"
   for regex in ${commit_msg_reg[*]}
     do
       if [[ $TRAVIS_COMMIT_MESSAGE =~ $regex ]]; then
