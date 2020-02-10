@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+TRAVIS_COMMIT_MESSAGE = $1
+printf "hh: $TRAVIS_COMMIT_MESSAGE"
 set -ex
 
 rm -rf cover
@@ -21,14 +23,14 @@ commit_msg_reg=(
 
 # check commit message
 check_commit_msg () {
-  printf "${TRAVIS_COMMIT_MESSAGE}"
+  printf "$TRAVIS_COMMIT_MESSAGE"
   for regex in ${commit_msg_reg[*]}
     do
-      if [[ ${TRAVIS_COMMIT_MESSAGE} =~ $regex ]]; then
-          printf "do match \n\n" "${TRAVIS_COMMIT_MESSAGE}" "$regex ✅"
+      if [[ $TRAVIS_COMMIT_MESSAGE =~ $regex ]]; then
+          printf "do match \n\n" "$TRAVIS_COMMIT_MESSAGE" "$regex ✅"
           return 0
       else
-        printf "does not match \n\n" "${TRAVIS_COMMIT_MESSAGE}" "$regex ❗"
+        printf "does not match \n\n" "$TRAVIS_COMMIT_MESSAGE" "$regex ❗"
       fi
     done
   return 1
@@ -37,7 +39,7 @@ check_commit_msg () {
 check_commit_msg
 if [[ $? == 1 ]]
 then
-  printf "\n\n" "${TRAVIS_COMMIT_MESSAGE}" "commit message failed match "
+  printf "\n\n" "$TRAVIS_COMMIT_MESSAGE" "commit message failed match "
   exit 1
 fi
 
