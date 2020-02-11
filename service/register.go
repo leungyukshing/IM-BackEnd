@@ -12,6 +12,7 @@ func (handler *Handler) Register() {
 	ctx := *(handler.Ctx)
 	log := logger(ctx)
 	registerRequest := im_entities.RegisterRequest{}
+	log.Infof("RequestBody: %v", handler.Ctx.Input.RequestBody)
 	err := proto.Unmarshal(ctx.Input.RequestBody, &registerRequest)
 	if err != nil {
 		log.Error("RegisterRequest Unmarshal Failed!")
@@ -31,12 +32,23 @@ func handleRegister(ctx context.Context, registerRequest im_entities.RegisterReq
 	log.Info("handleRegister start")
 
 	registerResponse := im_entities.RegisternResponse{}
-	isExisted, err := database.IsUserExisted(registerRequest.GetEmail())
 	email := registerRequest.GetEmail()
+	password := registerRequest.GetPassword()
+	username := registerRequest.GetUsername()
+	log.Infof("registerRequest: email: %v, password: %v, username: %v", email, password, username)
+	if email == "" || password == "" || username == "" {
+		code := "200"
+		message := "Empty Field"
+		registerResponse.Code = &code
+		registerResponse.Message = &message
+		return registerResponse, nil
+	}
+	isExisted, err := database.IsUserExisted(email)
+
 	ok := validateEmail(email)
 	if !ok {
 		log.Info("Invalid Email.")
-		code := "400"
+		code := "200"
 		message := "Invalid Email"
 		registerResponse.Code = &code
 		registerResponse.Message = &message
@@ -57,9 +69,8 @@ func handleRegister(ctx context.Context, registerRequest im_entities.RegisterReq
 		registerResponse.Code = &code
 		registerResponse.Message = &message
 	} else {
-		password := registerRequest.GetPassword()
 		sum := encodePassword(password)
-		err = database.AddUser(registerRequest.GetUsername(), sum, registerRequest.GetEmail())
+		err = database.AddUser(username, sum, email)
 		if err != nil {
 			log.WithError(err).Error("AddUser Failed")
 			code := "500"

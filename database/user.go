@@ -22,13 +22,16 @@ func ValidateLogin(email string, password string) (bool, entities.User, error) {
 }
 
 func IsUserExisted(email string) (bool, error) {
-	var u []entities.User
-	db := Server.Where("email = ?", email).Find(&u)
+	log := logger()
+	log.Infof("email: %v", email)
+	log.Infof("Server: %v", Server)
+	var u entities.User
+	db := Server.Where("email = ?", email).First(&u)
+	if db.RecordNotFound() {
+		return false, nil
+	}
 	if db.Error != nil {
 		return false, db.Error
-	}
-	if len(u) == 0 {
-		return false, nil
 	} else {
 		return true, nil
 	}

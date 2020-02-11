@@ -9,11 +9,12 @@ import (
 var Server *gorm.DB
 
 func InitMySQL() {
+	var err error
 	log := logger()
 	log.Info("InitMySQL start")
 
 	dsn := conf.Conf.MysqlDsn
-	Server, err := gorm.Open("mysql", dsn)
+	Server, err = gorm.Open("mysql", dsn)
 
 	if err == nil {
 		log.Info("Open DB Success")

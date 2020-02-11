@@ -36,10 +36,18 @@ func handleLogin(ctx context.Context, loginRequest im_entities.LoginRequest) (im
 	loginResponse := im_entities.LoginResponse{}
 	email := loginRequest.GetEmail()
 	password := loginRequest.GetPassword()
+
+	if email == "" || password == "" {
+		code := "200"
+		message := "Email or Password Empty"
+		loginResponse.Code = &code
+		loginResponse.Message = &message
+		return loginResponse, nil
+	}
 	sum := encodePassword(password)
 	ok, user, err := verifyLoginUser(ctx, email, sum)
 	if err != nil {
-		code := "500"
+		code := "200"
 		message := "DB_ERR"
 		loginResponse.Code = &code
 		loginResponse.Message = &message
