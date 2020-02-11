@@ -15,12 +15,12 @@ func ValidateLogin(email string, password string) (bool, entities.User, error) {
 	if u.Password != password {
 		return false, u, nil
 	}
-	return true, u,nil
+	return true, u, nil
 }
 
 func IsUserExisted(email string) (bool, error) {
 	var u []entities.User
-	db := Server.Where("email = ?", email).First(&u)
+	db := Server.Where("email = ?", email).Find(&u)
 	if db.Error != nil {
 		return false, db.Error
 	}
@@ -33,7 +33,7 @@ func IsUserExisted(email string) (bool, error) {
 
 func AddUser(username string, password string, email string) error {
 	user := entities.User{
-		Username: username,
+		Username:    username,
 		Password:    password,
 		Email:       email,
 		CreatedTime: time.Now(),

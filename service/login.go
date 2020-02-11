@@ -1,13 +1,13 @@
 package service
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"github.com/astaxie/beego/context"
 	"github.com/backend/database"
 	"github.com/backend/database/entities"
 	im_entities "github.com/backend/im-protobuf/improto"
 	"github.com/golang/protobuf/proto"
-	"crypto/sha256"
-	"encoding/hex"
 	"strconv"
 )
 
@@ -61,7 +61,7 @@ func handleLogin(ctx context.Context, loginRequest im_entities.LoginRequest) (im
 	return loginResponse, nil
 }
 
-func encodePassword(password string) string{
+func encodePassword(password string) string {
 	h := sha256.New()
 	h.Write([]byte(password))
 	sum := hex.EncodeToString(h.Sum(nil))
@@ -83,14 +83,14 @@ func verifyLoginUser(ctx context.Context, email string, password string) (bool, 
 		return false, userPB, nil
 	}
 	userPB := toUserPB(user)
-	return true, userPB , nil
+	return true, userPB, nil
 }
 
-func toUserPB(user entities.User) im_entities.User  {
+func toUserPB(user entities.User) im_entities.User {
 	userID := strconv.FormatInt(user.ID, 10)
 	userPB := im_entities.User{
-		Userid: &(userID),
-		Email: &(user.Email),
+		Userid:   &(userID),
+		Email:    &(user.Email),
 		Username: &(user.Username),
 	}
 	return userPB

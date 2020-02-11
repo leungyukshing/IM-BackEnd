@@ -1,19 +1,10 @@
 package dbtest
 
 import (
-	"github.com/astaxie/beego"
 	"github.com/backend/database"
 	"github.com/backend/database/entities"
 	"github.com/jinzhu/gorm"
 	"time"
-)
-
-var (
-	user   = beego.AppConfig.String("mysqluserTest")
-	pass   = beego.AppConfig.String("mysqlpassTest")
-	url    = beego.AppConfig.String("mysqlurlTest")
-	port   = beego.AppConfig.String("mysqlportTest")
-	dbname = beego.AppConfig.String("mysqldbnameTest")
 )
 
 // All testing tables
@@ -23,7 +14,7 @@ var tables = []interface{}{
 
 func InitTestingMySQL() {
 	if database.Server == nil {
-		dsn := user + ":" + pass + "@tcp(" + url + ":" + port + ")/" + dbname + "?charset=utf8" + "&parseTime=True&loc=Local"
+		dsn := "root:******@tcp(127.0.0.1:3306)/gotest?charset=utf8&parseTime=True&loc=Local"
 		var err error
 		database.Server, err = gorm.Open("mysql", dsn)
 		if err != nil {
@@ -42,16 +33,16 @@ func createTables() {
 
 func ClearTables() {
 	for _, table := range tables {
-		if !database.Server.HasTable(tables) {
+		if !database.Server.HasTable(table) {
 			continue
 		}
-		if result := database.Server.Where(true).Delete(table); result.Error != nil {
+		if result := database.Server.Delete(table); result.Error != nil {
 			// retry if table is locked
 			i := 0
 			d := time.Second
 			for ; i < 3; i++ {
 				_ = <-time.After(d)
-				result := database.Server.Where(true).Delete(table)
+				result := database.Server.Delete(table)
 				if result.Error == nil {
 					break
 				}

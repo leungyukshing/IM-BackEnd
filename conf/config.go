@@ -6,10 +6,11 @@ import (
 )
 
 var Conf *Configuration
+
 const path = "conf.yml"
 
 type Configuration struct {
-	MysqlDsn string `yaml:"mysqlDsn"`
+	MysqlDsn    string `yaml:"mysqlDsn"`
 	GraylogAddr string `yaml:"graylog"`
 }
 

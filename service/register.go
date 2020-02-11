@@ -8,7 +8,7 @@ import (
 	"regexp"
 )
 
-func (handler *Handler) Register()  {
+func (handler *Handler) Register() {
 	ctx := *(handler.Ctx)
 	log := logger(ctx)
 	registerRequest := im_entities.RegisterRequest{}
@@ -31,7 +31,7 @@ func handleRegister(ctx context.Context, registerRequest im_entities.RegisterReq
 	log.Info("handleRegister start")
 
 	registerResponse := im_entities.RegisternResponse{}
-	isExisted, err := database.IsUserExisted(registerRequest.GetUsername())
+	isExisted, err := database.IsUserExisted(registerRequest.GetEmail())
 	email := registerRequest.GetEmail()
 	ok := validateEmail(email)
 	if !ok {
@@ -51,8 +51,9 @@ func handleRegister(ctx context.Context, registerRequest im_entities.RegisterReq
 		return registerResponse, nil
 	}
 	if isExisted {
+		log.Info("Email Existed, Not insert")
 		code := "200"
-		message := "Username Existed"
+		message := "Email Existed"
 		registerResponse.Code = &code
 		registerResponse.Message = &message
 	} else {
