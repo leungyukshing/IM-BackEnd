@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 TRAVIS_COMMIT_MESSAGE=$1
-printf "$TRAVIS_COMMIT_MESSAGE"
+
 
 set -ex
 
@@ -35,7 +35,7 @@ check_commit_msg () {
     done
   return 1
 }
-
+printf "here: " "$TRAVIS_COMMIT_MESSAGE"
 check_commit_msg
 if [[ $? == 1 ]]
 then
