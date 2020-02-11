@@ -19,7 +19,7 @@ func InitTestingMySQL() {
 	var dsn string
 	if database.Server == nil {
 		if env := os.Getenv("ENV"); env == "ci" {
-			dsn = "root:ci@tcp(127.0.0.1:3306)/ci?charset=utf8&parseTime=True&loc=Local"
+			dsn = "root:ci@tcp(mysql:3306)/ci?charset=utf8&parseTime=True&loc=Local"
 		} else {
 			dsn = "root:******@tcp(127.0.0.1:3306)/gotest?charset=utf8&parseTime=True&loc=Local"
 		}
