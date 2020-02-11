@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 TRAVIS_COMMIT_MESSAGE=$1
-
+number=$#
+printf "num: " "$number"
 
 set -ex
 
