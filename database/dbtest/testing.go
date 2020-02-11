@@ -4,6 +4,7 @@ import (
 	"github.com/backend/database"
 	"github.com/backend/database/entities"
 	"github.com/jinzhu/gorm"
+	"os"
 	"time"
 )
 
@@ -13,9 +14,15 @@ var tables = []interface{}{
 }
 
 func InitTestingMySQL() {
+	var err error
+	var dsn string
 	if database.Server == nil {
-		dsn := "root:******@tcp(127.0.0.1:3306)/gotest?charset=utf8&parseTime=True&loc=Local"
-		var err error
+		if env := os.Getenv("ENV"); env == "ci" {
+			dsn = "root:ci@tcp(127.0.0.1:3306)/ci?charset=utf8&parseTime=True&loc=Local"
+		} else {
+			dsn = "root:******@tcp(127.0.0.1:3306)/gotest?charset=utf8&parseTime=True&loc=Local"
+		}
+
 		database.Server, err = gorm.Open("mysql", dsn)
 		if err != nil {
 			panic(err)
