@@ -1,7 +1,6 @@
 package dbtest
 
 import (
-	"fmt"
 	"github.com/backend/database"
 	"github.com/backend/database/entities"
 	"github.com/jinzhu/gorm"
@@ -23,7 +22,6 @@ func InitTestingMySQL() {
 		} else {
 			dsn = "root:******@tcp(127.0.0.1:3306)/gotest?charset=utf8&parseTime=True&loc=Local"
 		}
-		fmt.Printf("dsn: %v", dsn)
 		database.Server, err = gorm.Open("mysql", dsn)
 		if err != nil {
 			panic(err)
