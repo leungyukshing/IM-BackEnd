@@ -2,6 +2,7 @@
 
 TRAVIS_COMMIT_MESSAGE=$1
 printf "$TRAVIS_COMMIT_MESSAGE"
+
 set -ex
 
 rm -rf cover
