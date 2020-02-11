@@ -60,3 +60,17 @@ func ClearTables() {
 		}
 	}
 }
+
+func GenerateUsers() {
+	user := entities.User{
+		Username:    "test",
+		Password:    "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", // sha256(password)
+		Email:       "test@gmail.com",
+		CreatedTime: time.Now(),
+		EncryptKey:  "",
+	}
+	db := database.Server.Create(&user)
+	if db.Error != nil {
+		panic(db.Error)
+	}
+}

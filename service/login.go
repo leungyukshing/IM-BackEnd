@@ -53,7 +53,7 @@ func handleLogin(ctx context.Context, loginRequest im_entities.LoginRequest) (im
 	} else {
 		loginResponse.User = &user
 		code := "200"
-		message := "Login Succeed!"
+		message := "Login Success"
 		loginResponse.Code = &code
 		loginResponse.Message = &message
 	}

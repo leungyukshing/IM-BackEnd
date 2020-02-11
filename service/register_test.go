@@ -22,9 +22,11 @@ func Test_handleRegister(t *testing.T) {
 	dbtest.InitTestingMySQL()
 	defer dbtest.ClearTables()
 	ctx := context.Context{}
+
+	// Correct
 	username := "test1"
 	password := "password1"
-	email := "test@gmail.com"
+	email := "test1@gmail.com"
 	req := im_entities.RegisterRequest{
 		Username:             &username,
 		Password:             &password,
@@ -41,4 +43,17 @@ func Test_handleRegister(t *testing.T) {
 	ok, err := database.IsUserExisted(email)
 	assert.Nil(t, err)
 	assert.Equal(t, true, ok)
+
+	// Existed User
+	dbtest.GenerateUsers()
+	username = "test"
+	password = "password"
+	email = "test@gmail.com"
+	req.Username = &username
+	req.Password = &password
+	req.Email = &email
+	resp, err = handleRegister(ctx, req)
+	assert.Nil(t, err)
+	assert.Equal(t, "200", resp.GetCode())
+	assert.Equal(t, "Email Existed", resp.GetMessage())
 }

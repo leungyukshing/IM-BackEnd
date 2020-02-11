@@ -9,6 +9,9 @@ import (
 func ValidateLogin(email string, password string) (bool, entities.User, error) {
 	var u entities.User
 	db := Server.Where("email = ?", email).First(&u)
+	if db.RecordNotFound() {
+		return false, u, nil
+	}
 	if db.Error != nil {
 		return false, u, db.Error
 	}
