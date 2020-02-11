@@ -33,7 +33,7 @@ func IsUserExisted(email string) (bool, error) {
 
 func AddUser(username string, password string, email string) error {
 	user := entities.User{
-		Username:    username,
+		Username: username,
 		Password:    password,
 		Email:       email,
 		CreatedTime: time.Now(),

@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-TRAVIS_COMMIT_MESSAGE=$1
-number=$#
-printf "num: " "$number"
-
-set -ex
-
 rm -rf cover
 mkdir cover
 
@@ -36,13 +30,13 @@ check_commit_msg () {
     done
   return 1
 }
-printf "here: " "$TRAVIS_COMMIT_MESSAGE"
-check_commit_msg
-if [[ $? == 1 ]]
-then
-  printf "\n\n" "$TRAVIS_COMMIT_MESSAGE" "commit message failed match "
-  exit 1
-fi
+
+#check_commit_msg
+#if [[ $? == 1 ]]
+#then
+#  printf "\n\n" "$TRAVIS_COMMIT_MESSAGE" "commit message failed match "
+#  exit 1
+#fi
 
 # check gofmt
 gofiles=$(git diff --diff-filter=ACM --name-only origin/master..HEAD | awk '!/vendor/ && /.go$/')
