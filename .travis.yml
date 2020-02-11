@@ -10,7 +10,7 @@ script:
 - go version
 - chmod +x ./bin/run-test.sh
 - echo ${TRAVIS_COMMIT_MESSAGE}
-- "./bin/run-test.sh" ${TRAVIS_COMMIT_MESSAGE}
+- "./bin/run-test.sh ${TRAVIS_COMMIT_MESSAGE}"
 after_success:
 - ssh root@139.199.103.169 -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa " cd /root/go/src/github.com/backend
   && git reset --hard && git pull origin test --force && chmod +x ./deploy.sh && ./deploy.sh"
