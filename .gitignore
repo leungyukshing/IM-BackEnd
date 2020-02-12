@@ -4,5 +4,4 @@ coverage.out
 cover/
 id_rsa
 conf.yml
-routers/commentsRouter_service.go
 *.tmp
