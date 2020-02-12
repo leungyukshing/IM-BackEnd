@@ -15,4 +15,12 @@ func init() {
 			MethodParams: param.Make(),
 			Params: nil})
 
+	beego.GlobalControllerRouter["github.com/backend/service:TestHandler"] = append(beego.GlobalControllerRouter["github.com/backend/service:TestHandler"],
+		beego.ControllerComments{
+			Method: "Test",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
 }
