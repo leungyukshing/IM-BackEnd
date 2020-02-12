@@ -7,28 +7,9 @@ import (
 	"github.com/backend/database"
 	"github.com/backend/database/entities"
 	im_entities "github.com/backend/im-protobuf/improto"
-	"github.com/golang/protobuf/proto"
 	"strconv"
 )
 
-func (handler *Handler) Login() {
-	ctx := *(handler.Ctx)
-	log := logger(ctx)
-	loginRequest := im_entities.LoginRequest{}
-	err := proto.Unmarshal(ctx.Input.RequestBody, &loginRequest)
-	if err != nil {
-		log.Error("LoginRequest Unmarshal Failed!")
-		return
-	}
-	loginResponse, err := handleLogin(ctx, loginRequest)
-	data, err := proto.Marshal(&loginResponse)
-	if err != nil {
-		// log error
-		log.Error("LoginResponse Marshal Failed!")
-		return
-	}
-	handler.Ctx.Output.Body(data)
-}
 
 func handleLogin(ctx context.Context, loginRequest im_entities.LoginRequest) (im_entities.LoginResponse, error) {
 	log := logger(ctx)

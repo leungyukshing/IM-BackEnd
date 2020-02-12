@@ -7,9 +7,32 @@ import (
 
 func init() {
 	// test api
-	beego.Router("/test", &service.Handler{}, "get:Test")
-	beego.Router("/login", &service.Handler{}, "post:Login")
-	beego.Router("/register", &service.Handler{}, "post:Register")
+	//beego.Router("/test", &service.Handler{}, "get:Test")
+	//beego.Router("/login", &service.Handler{}, "post:Login")
+	//beego.Router("/register", &service.Handler{}, "post:Register")
 	//beego.Router("/getChatList", &service.Handler{}, "get:GetChatList")
-	//beego.Router("/getContactsLayout", &service.Handler{},"GetContactsLayout")
+	//beego.Router("/getContactsList", &service.Handler{},"GetContactsLayout")
+	ns := beego.NewNamespace("/apiv1",
+		beego.NSNamespace("/test",
+			beego.NSInclude(
+				&service.TestHandler{}),
+		),
+		beego.NSNamespace("/register",
+			beego.NSInclude(
+				&service.RegisterHandler{}),
+		),
+		beego.NSNamespace("/login",
+			beego.NSInclude(
+				&service.LoginHandler{}),
+		),
+		beego.NSNamespace("getChatList",
+			beego.NSInclude(
+				&service.ChatHandler{}),
+		),
+		beego.NSNamespace("getContactsList",
+			beego.NSInclude(
+				&service.ContactHandler{}),
+		),
+	)
+	beego.AddNamespace(ns)
 }

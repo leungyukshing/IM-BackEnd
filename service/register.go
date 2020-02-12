@@ -4,28 +4,8 @@ import (
 	"github.com/astaxie/beego/context"
 	"github.com/backend/database"
 	im_entities "github.com/backend/im-protobuf/improto"
-	"github.com/golang/protobuf/proto"
 	"regexp"
 )
-
-func (handler *Handler) Register() {
-	ctx := *(handler.Ctx)
-	log := logger(ctx)
-	registerRequest := im_entities.RegisterRequest{}
-	log.Infof("RequestBody: %v", handler.Ctx.Input.RequestBody)
-	err := proto.Unmarshal(ctx.Input.RequestBody, &registerRequest)
-	if err != nil {
-		log.Error("RegisterRequest Unmarshal Failed!")
-		return
-	}
-	registerResponse, err := handleRegister(ctx, registerRequest)
-	data, err := proto.Marshal(&registerResponse)
-	if err != nil {
-		log.Error("RegisterResponse Marshal Failed!")
-		return
-	}
-	handler.Ctx.Output.Body(data)
-}
 
 func handleRegister(ctx context.Context, registerRequest im_entities.RegisterRequest) (im_entities.RegisternResponse, error) {
 	log := logger(ctx)
