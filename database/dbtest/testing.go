@@ -10,7 +10,7 @@ import (
 
 // All testing tables
 var tables = []interface{}{
-	&entities.User{},
+	&entities.Chat{}, &entities.User{},
 }
 
 func InitTestingMySQL() {
@@ -73,4 +73,31 @@ func GenerateUsers() {
 	if db.Error != nil {
 		panic(db.Error)
 	}
+}
+
+func GenerateChats() {
+	chat1 := entities.Chat{
+		UserID:         int64(100),
+		Name:           "testChat1",
+		CreatedTIme:    time.Now(),
+		LastUpdateTime: time.Now(),
+	}
+	chat2 := entities.Chat{
+		UserID:         int64(100),
+		Name:           "testChat2",
+		CreatedTIme:    time.Now(),
+		LastUpdateTime: time.Now(),
+	}
+	chat3 := entities.Chat{
+		UserID:         int64(101),
+		Name:           "testChat3",
+		CreatedTIme:    time.Now(),
+		LastUpdateTime: time.Now(),
+	}
+	db := database.Server.Create(&chat1)
+	if db.Error != nil {
+		panic(db.Error)
+	}
+	database.Server.Create(&chat2)
+	database.Server.Create(&chat3)
 }

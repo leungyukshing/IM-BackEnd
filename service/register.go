@@ -15,7 +15,7 @@ func handleRegister(ctx context.Context, registerRequest im_entities.RegisterReq
 	email := registerRequest.GetEmail()
 	password := registerRequest.GetPassword()
 	username := registerRequest.GetUsername()
-	log.Infof("registerRequest: email: %v, password: %v, username: %v", email, password, username)
+
 	if email == "" || password == "" || username == "" {
 		code := "200"
 		message := "Empty Field"

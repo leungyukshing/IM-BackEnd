@@ -46,36 +46,53 @@ func (handler *LoginHandler) Login() {
 	loginRequest := im_entities.LoginRequest{}
 	err := proto.Unmarshal(ctx.Input.RequestBody, &loginRequest)
 	if err != nil {
-		log.Error("LoginRequest Unmarshal Failed!")
+		log.WithError(err).Error("LoginRequest Unmarshal Failed!")
 		return
 	}
 	loginResponse, err := handleLogin(ctx, loginRequest)
 	data, err := proto.Marshal(&loginResponse)
 	if err != nil {
-		// log error
-		log.Error("LoginResponse Marshal Failed!")
+		log.WithError(err).Error("LoginResponse Marshal Failed!")
 		return
 	}
 	handler.Ctx.Output.Body(data)
 }
 
 // @Title Register
-// @route / [post]
+// @router / [post]
 func (handler *RegisterHandler) Register() {
 	ctx := *(handler.Ctx)
 	log := logger(ctx)
 	registerRequest := im_entities.RegisterRequest{}
-	log.Infof("RequestBody: %v", handler.Ctx.Input.RequestBody)
 	err := proto.Unmarshal(ctx.Input.RequestBody, &registerRequest)
 	if err != nil {
-		log.Error("RegisterRequest Unmarshal Failed!")
+		log.WithError(err).Error("RegisterRequest Unmarshal Failed!")
 		return
 	}
 	registerResponse, err := handleRegister(ctx, registerRequest)
 	data, err := proto.Marshal(&registerResponse)
 	if err != nil {
-		log.Error("RegisterResponse Marshal Failed!")
+		log.WithError(err).Error("RegisterResponse Marshal Failed!")
 		return
+	}
+	handler.Ctx.Output.Body(data)
+}
+
+// @Title GetChatList
+// @router / [post]
+func (handler *ChatHandler) GetChatList() {
+	ctx := *(handler.Ctx)
+	log := logger(ctx)
+	getChatListRequest := im_entities.GetChatListRequest{}
+	err := proto.Unmarshal(ctx.Input.RequestBody, &getChatListRequest)
+	if err != nil {
+		log.WithError(err).Error("GetChatListRequest Unmarshal Failed!")
+		return
+	}
+	getChatListResponse, err := handleGetChatList(ctx, getChatListRequest)
+	data, err := proto.Marshal(&getChatListResponse)
+	if err != nil {
+		log.WithError(err).Error("GetChatListResponse Marshal Failed!")
 	}
 	handler.Ctx.Output.Body(data)
 }

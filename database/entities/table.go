@@ -10,3 +10,11 @@ type User struct {
 	CreatedTime time.Time
 	EncryptKey  string
 }
+
+type Chat struct {
+	ID int64
+	UserID int64
+	Name string
+	CreatedTIme time.Time
+	LastUpdateTime time.Time
+}
