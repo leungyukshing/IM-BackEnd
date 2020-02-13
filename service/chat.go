@@ -40,7 +40,6 @@ func handleGetChatList(ctx context.Context, getChatListRequest im_entities.GetCh
 	return getChatListResponse, nil
 }
 
-
 func toPBChatList(chatList []entities.Chat) []*im_entities.Chat {
 	var result []*im_entities.Chat
 	for _, chat := range chatList {

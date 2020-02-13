@@ -10,7 +10,6 @@ import (
 	"strconv"
 )
 
-
 func handleLogin(ctx context.Context, loginRequest im_entities.LoginRequest) (im_entities.LoginResponse, error) {
 	log := logger(ctx)
 	log.Info("handleLogin start")

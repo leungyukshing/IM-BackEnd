@@ -12,16 +12,16 @@ type User struct {
 }
 
 type Chat struct {
-	ID int64
-	UserID int64
-	Name string
-	CreatedTIme time.Time
+	ID             int64
+	UserID         int64
+	Name           string
+	CreatedTIme    time.Time
 	LastUpdateTime time.Time
 }
 
 type Contact struct {
-	ID int64
-	UserID1 int64
-	UserID2 int64
+	ID          int64
+	UserID1     int64
+	UserID2     int64
 	CreatedTime time.Time
 }

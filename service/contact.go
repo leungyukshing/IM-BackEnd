@@ -7,7 +7,7 @@ import (
 	im_entities "github.com/backend/im-protobuf/improto"
 )
 
-func handleGetContactList(ctx context.Context, getContactListRequest im_entities.GetContactListRequest) (im_entities.GetContactListResponse, error)  {
+func handleGetContactList(ctx context.Context, getContactListRequest im_entities.GetContactListRequest) (im_entities.GetContactListResponse, error) {
 	log := logger(ctx)
 	log.Info("handleGetContactList start")
 	getContactListResponse := im_entities.GetContactListResponse{}
@@ -45,7 +45,7 @@ func handleGetContactList(ctx context.Context, getContactListRequest im_entities
 	return getContactListResponse, nil
 }
 
-func toPBUsers(users []entities.User) []*im_entities.User  {
+func toPBUsers(users []entities.User) []*im_entities.User {
 	var result []*im_entities.User
 	for _, u := range users {
 		t := toPBUser(u)

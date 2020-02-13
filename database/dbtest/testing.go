@@ -128,7 +128,7 @@ func GenerateContacts() {
 		Username:    "user1",
 		Password:    "",
 		Email:       "",
-		CreatedTime: time.Time{},
+		CreatedTime: time.Now(),
 		EncryptKey:  "",
 	}
 	user2 := entities.User{
@@ -136,7 +136,7 @@ func GenerateContacts() {
 		Username:    "user2",
 		Password:    "",
 		Email:       "",
-		CreatedTime: time.Time{},
+		CreatedTime: time.Now(),
 		EncryptKey:  "",
 	}
 	user3 := entities.User{
@@ -144,7 +144,7 @@ func GenerateContacts() {
 		Username:    "",
 		Password:    "",
 		Email:       "",
-		CreatedTime: time.Time{},
+		CreatedTime: time.Now(),
 		EncryptKey:  "",
 	}
 

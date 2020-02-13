@@ -28,7 +28,6 @@ type ChatHandler struct {
 	beego.Controller
 }
 
-
 // @Title Test
 // @router / [get]
 func (handler *TestHandler) Test() {

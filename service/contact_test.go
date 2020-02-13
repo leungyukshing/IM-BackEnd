@@ -8,7 +8,6 @@ import (
 	"testing"
 )
 
-
 func Test_handleGetContactList(t *testing.T) {
 	dbtest.InitTestingMySQL()
 	defer dbtest.ClearTables()
