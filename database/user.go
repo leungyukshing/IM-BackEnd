@@ -51,3 +51,12 @@ func AddUser(username string, password string, email string) error {
 	}
 	return nil
 }
+
+func GetUserByIDs(userIDs []int64) ([]entities.User, error) {
+	var u []entities.User
+	db := Server.Where("id in (?)", userIDs).Find(&u)
+	if db.Error != nil {
+		return u, db.Error
+	}
+	return u, nil
+}

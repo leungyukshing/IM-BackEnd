@@ -97,6 +97,25 @@ func (handler *ChatHandler) GetChatList() {
 	handler.Ctx.Output.Body(data)
 }
 
+// @Title GetContactList
+// @router / [post]
+func (handler *ChatHandler) GetContactList() {
+	ctx := *(handler.Ctx)
+	log := logger(ctx)
+	getContactListRequest := im_entities.GetContactListRequest{}
+	err := proto.Unmarshal(ctx.Input.RequestBody, &getContactListRequest)
+	if err != nil {
+		log.WithError(err).Error("GetContactListRequest Unmarshal Failed!")
+		return
+	}
+	getContactListResponse, err := handleGetContactList(ctx, getContactListRequest)
+	data, err := proto.Marshal(&getContactListResponse)
+	if err != nil {
+		log.WithError(err).Error("GetContactListResponse Marshal Failed!")
+	}
+	handler.Ctx.Output.Body(data)
+}
+
 func logger(ctx context.Context) *logrus.Entry {
 	fields := logrus.Fields{}
 	return logrus.WithFields(fields)

@@ -10,7 +10,7 @@ import (
 
 // All testing tables
 var tables = []interface{}{
-	&entities.Chat{}, &entities.User{},
+	&entities.Chat{}, &entities.Contact{}, &entities.User{},
 }
 
 func InitTestingMySQL() {
@@ -100,4 +100,63 @@ func GenerateChats() {
 	}
 	database.Server.Create(&chat2)
 	database.Server.Create(&chat3)
+}
+
+func GenerateContacts() {
+	contact1 := entities.Contact{
+		UserID1:     int64(100),
+		UserID2:     int64(105),
+		CreatedTime: time.Now(),
+	}
+	contact2 := entities.Contact{
+		UserID1:     int64(100),
+		UserID2:     int64(102),
+		CreatedTime: time.Now(),
+	}
+	contact3 := entities.Contact{
+		UserID1:     int64(104),
+		UserID2:     int64(100),
+		CreatedTime: time.Now(),
+	}
+	contact4 := entities.Contact{
+		UserID1:     int64(105),
+		UserID2:     int64(108),
+		CreatedTime: time.Now(),
+	}
+	user1 := entities.User{
+		ID:          int64(102),
+		Username:    "user1",
+		Password:    "",
+		Email:       "",
+		CreatedTime: time.Time{},
+		EncryptKey:  "",
+	}
+	user2 := entities.User{
+		ID:          int64(104),
+		Username:    "user2",
+		Password:    "",
+		Email:       "",
+		CreatedTime: time.Time{},
+		EncryptKey:  "",
+	}
+	user3 := entities.User{
+		ID:          int64(105),
+		Username:    "",
+		Password:    "",
+		Email:       "",
+		CreatedTime: time.Time{},
+		EncryptKey:  "",
+	}
+
+	db := database.Server.Create(&contact1)
+	if db.Error != nil {
+		panic(db.Error)
+	}
+	database.Server.Create(&contact2)
+	database.Server.Create(&contact3)
+	database.Server.Create(&contact4)
+
+	database.Server.Create(&user1)
+	database.Server.Create(&user2)
+	database.Server.Create(&user3)
 }

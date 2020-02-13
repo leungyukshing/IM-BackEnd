@@ -71,11 +71,11 @@ func verifyLoginUser(ctx context.Context, email string, password string) (bool, 
 		userPB := im_entities.User{}
 		return false, userPB, nil
 	}
-	userPB := toUserPB(user)
+	userPB := toPBUser(user)
 	return true, userPB, nil
 }
 
-func toUserPB(user entities.User) im_entities.User {
+func toPBUser(user entities.User) im_entities.User {
 	userID := strconv.FormatInt(user.ID, 10)
 	userPB := im_entities.User{
 		Userid:   &(userID),

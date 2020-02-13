@@ -34,9 +34,11 @@ This table is used to store user information
 | time       | datetime |             | when this user is created |
 | encryptkey | varchar |             | key used to encrypt info  |
 
-### friend
+### contact
 
 This table is used to store friends relationship among users. We use bi-relation, that is, only one record of a friend ship is stored in the database.[Store Friends Relationship](https://blog.csdn.net/cienit/article/details/45158149)
+
+**Must: **user_id1 < user_id2
 
 | Name     | Type    | Key         | Note                                  |
 | -------- | ------- | ----------- | ------------------------------------- |

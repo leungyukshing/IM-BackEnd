@@ -18,3 +18,10 @@ type Chat struct {
 	CreatedTIme time.Time
 	LastUpdateTime time.Time
 }
+
+type Contact struct {
+	ID int64
+	UserID1 int64
+	UserID2 int64
+	CreatedTime time.Time
+}
