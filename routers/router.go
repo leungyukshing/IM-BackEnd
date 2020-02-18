@@ -29,7 +29,7 @@ func init() {
 			beego.NSInclude(
 				&service.ChatHandler{}),
 		),
-		beego.NSNamespace("getContactsList",
+		beego.NSNamespace("getContactList",
 			beego.NSInclude(
 				&service.ContactHandler{}),
 		),

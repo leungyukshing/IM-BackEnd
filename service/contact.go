@@ -42,6 +42,7 @@ func handleGetContactList(ctx context.Context, getContactListRequest im_entities
 			getContactListResponse.User = list
 		}
 	}
+	log.Info("handleGetContactList finish")
 	return getContactListResponse, nil
 }
 

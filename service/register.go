@@ -7,16 +7,17 @@ import (
 	"regexp"
 )
 
-func handleRegister(ctx context.Context, registerRequest im_entities.RegisterRequest) (im_entities.RegisternResponse, error) {
+func handleRegister(ctx context.Context, registerRequest im_entities.RegisterRequest) (im_entities.RegisterResponse, error) {
 	log := logger(ctx)
 	log.Info("handleRegister start")
 
-	registerResponse := im_entities.RegisternResponse{}
+	registerResponse := im_entities.RegisterResponse{}
 	email := registerRequest.GetEmail()
 	password := registerRequest.GetPassword()
 	username := registerRequest.GetUsername()
 
 	if email == "" || password == "" || username == "" {
+		log.Info("Empty Field")
 		code := "200"
 		message := "Empty Field"
 		registerResponse.Code = &code
@@ -27,7 +28,7 @@ func handleRegister(ctx context.Context, registerRequest im_entities.RegisterReq
 
 	ok := validateEmail(email)
 	if !ok {
-		log.Info("Invalid Email.")
+		log.Info("Invalid Email")
 		code := "200"
 		message := "Invalid Email"
 		registerResponse.Code = &code
@@ -43,7 +44,7 @@ func handleRegister(ctx context.Context, registerRequest im_entities.RegisterReq
 		return registerResponse, nil
 	}
 	if isExisted {
-		log.Info("Email Existed, Not insert")
+		log.Info("Email Existed")
 		code := "200"
 		message := "Email Existed"
 		registerResponse.Code = &code

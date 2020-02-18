@@ -37,6 +37,7 @@ func handleGetChatList(ctx context.Context, getChatListRequest im_entities.GetCh
 		getChatListResponse.Message = &message
 		getChatListResponse.Chat = list
 	}
+	log.Info("handleGetChatList finish")
 	return getChatListResponse, nil
 }
 

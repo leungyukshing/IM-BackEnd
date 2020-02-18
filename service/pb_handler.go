@@ -98,7 +98,7 @@ func (handler *ChatHandler) GetChatList() {
 
 // @Title GetContactList
 // @router / [post]
-func (handler *ChatHandler) GetContactList() {
+func (handler *ContactHandler) GetContactList() {
 	ctx := *(handler.Ctx)
 	log := logger(ctx)
 	getContactListRequest := im_entities.GetContactListRequest{}

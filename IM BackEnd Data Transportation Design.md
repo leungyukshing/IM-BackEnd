@@ -16,6 +16,27 @@ We only need to edit `.proto` file. And use the script to generate `.go` automat
 
 ## PB Format
 
+### User
+
+```protobuf
+message User {
+    optional string userid = 1;
+    optional string username = 2;
+    optional string email = 3;
+}
+```
+
+### Chat
+
+```protobuf
+message Chat {
+    optional string chatid = 1;
+    optional string userid = 2; // ownerID
+    optional string chatname = 3;
+    optional string last_update_time = 4;
+}
+```
+
 ### Register
 
 ```protobuf
@@ -25,7 +46,7 @@ message RegisterRequest {
     optional string email = 3;
 }
 
-message RegisternResponse {
+message RegisterResponse {
     optional string code = 1;
     optional string message = 2;
 }
@@ -33,12 +54,17 @@ message RegisternResponse {
 
 code:
 
-+ 200: Succeed
-+ xxx: Failed
++ 200: Request Succeed
++ 500: Server Database Error
 
 message:
 
-+ Duplicate Email: "Email existed"
++ Some Field Empty: "Empty Field"
+
++ Duplicate Email: "Email Existed"
++ Email Format Invalid: "Invalid Email"
++ DB Error: "DB_ERR"
++ Success: "Register Success"
 
 ### Login
 
@@ -51,30 +77,135 @@ message LoginRequest {
 message LoginResponse {
 	optional string code = 1;
     optional string message = 2;
-    optional string userid = 3;
-    optional string username = 4;    
+    optional User user = 3;
 }
 ```
 
 code:
 
-+ 200: Succeed
++ 200: Request Succeed
++ 500: Server Database Error
 
 message:
 
-+ 
++ Some Field Empty: "Email or Password Empty"
++ DB Error: "DB_ERR"
++ Verfity Fail: "Email or Password Incorrect"
++ Success: "Login Success"
+
+### GetChatList
+
+```protobuf
+message GetChatListRequest {
+    optional string userid = 1;
+}
+
+message GetChatListResponse {
+    optional string code = 1;
+    optional string message = 2;
+    repeated Chat chat = 3;
+}
+```
+
+code:
+
++ 200: Request Succeed
++ 500: Server Database Error
+
+message:
+
++ Field Empty: "UserID Empty"
++ DB Error: "DB_ERR"
++ Success: "GetChatList Success"
 
 ### GetContactList
 
 ```proto
 message GetContactListRequest {
-	
+    optional string userid = 1;
 }
 
 message GetContactListResponse {
-
+    optional string code = 1;
+    optional string message = 2;
+    repeated User user = 3;
 }
 ```
+
+code:
+
++ 200: Request Succeed
++ 500: Server Database Error
+
+message:
+
++ Field Empty: "UserID Empty"
++ DB Error: "DB_ERR"
++ Success: "GetContactList Success"
+
+### SendMessage
+
+```protobuf
+message SendMessageRequest {
+    optional string senderid = 1;
+    optional string chatid = 2;
+    optional string message =3;
+}
+
+message SendMessageResponse {
+    optional string code = 1;
+}
+```
+
+code:
+
++ 200: Request Succeed
++ 500: Server Database Error
+
+message:
+
+### CreateChat
+
+```protobuf
+message CreateChatRequest {
+    optional string userid = 1;
+    optional string receiverid = 2;
+}
+
+message CreateChatResponse {
+    optional string code = 1;
+    optional string message = 2;
+    optional Chat chat = 3;
+}
+```
+
+code:
+
++ 200: Request Succeed
++ 500: Server Database Error
+
+message:
+
++ Field Empty: "Some Field is Empty"
++ DB Error: "DB_ERR"
++ Chat already Existed: "Chat Existed"
++ Success: "CreateChat Success"
+
+### AddContact
+
+```protobuf
+message AddContactRequest {
+    optional string userid = 1;
+    optional string receiverid = 2;
+}
+
+message AddContactResponse {
+    optional string code = 1;
+    optional string message = 2;
+}
+```
+
+
 
 
 
