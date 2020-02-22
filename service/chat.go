@@ -61,3 +61,13 @@ func toPBChatList(chatList []entities.Chat) []*im_entities.Chat {
 	}
 	return result
 }
+
+func handleCreateChat(ctx context.Context, createChatRequest im_entities.CreateChatRequest) (im_entities.CreateChatResponse, error)  {
+	log := logger(ctx)
+	log.Info("handleCreateChat start")
+	createChatResponse := im_entities.CreateChatResponse{}
+	// userID := createChatRequest.GetUserid()
+	// receiverID := createChatRequest.GetReceiverid()
+	log.Info("handleCreateChat finish")
+	return createChatResponse, nil
+}

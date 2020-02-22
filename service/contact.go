@@ -55,3 +55,13 @@ func toPBUsers(users []entities.User) []*im_entities.User {
 	}
 	return result
 }
+
+func handleAddContact(ctx context.Context, addContactRequest im_entities.AddContactRequest) (im_entities.AddContactResponse, error) {
+	log := logger(ctx)
+	log.Info("handleAddContact start")
+	addContactResponse := im_entities.AddContactResponse{}
+	// userID := addContactRequest.GetUserid()
+	// receiverID := addContactRequest.GetReceiverid()
+	log.Info("handleAddContact finish")
+	return addContactResponse, nil
+}

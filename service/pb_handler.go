@@ -92,6 +92,7 @@ func (handler *ChatHandler) GetChatList() {
 	data, err := proto.Marshal(&getChatListResponse)
 	if err != nil {
 		log.WithError(err).Error("GetChatListResponse Marshal Failed!")
+		return
 	}
 	handler.Ctx.Output.Body(data)
 }
@@ -111,6 +112,47 @@ func (handler *ContactHandler) GetContactList() {
 	data, err := proto.Marshal(&getContactListResponse)
 	if err != nil {
 		log.WithError(err).Error("GetContactListResponse Marshal Failed!")
+		return
+	}
+	handler.Ctx.Output.Body(data)
+}
+
+// @Title AddContact
+// @router / [post]
+func (handler *ContactHandler) AddContact() {
+	ctx := *(handler.Ctx)
+	log := logger(ctx)
+	addContactRequest := im_entities.AddContactRequest{}
+	err := proto.Unmarshal(ctx.Input.RequestBody, &addContactRequest)
+	if err != nil {
+		log.WithError(err).Error("AddContactRequest Unmarshal Failed!")
+		return
+	}
+	addContactResponse, err := handleAddContact(ctx,addContactRequest)
+	data, err := proto.Marshal(&addContactResponse)
+	if err != nil {
+		log.WithError(err).Error("AddContactResponse Marshal Failed!")
+		return
+	}
+	handler.Ctx.Output.Body(data)
+}
+
+// @Title CreateChat
+// @router / [post]
+func (handler *ChatHandler) CreateChat() {
+	ctx := *(handler.Ctx)
+	log := logger(ctx)
+	createChatRequest := im_entities.CreateChatRequest{}
+	err := proto.Unmarshal(ctx.Input.RequestBody, &createChatRequest)
+	if err != nil {
+		log.WithError(err).Error("CreateChatRequest Unmarshal Failed!")
+		return
+	}
+	createChatResponse, err := handleCreateChat(ctx, createChatRequest)
+	data, err := proto.Marshal(&createChatResponse)
+	if err != nil {
+		log.WithError(err).Error("CreateChatResponse Marshal Failed!")
+		return
 	}
 	handler.Ctx.Output.Body(data)
 }
