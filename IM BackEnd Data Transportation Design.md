@@ -205,10 +205,13 @@ message AddContactResponse {
 }
 ```
 
+---
 
+## Websocket
 
-
+Use websocket to maintain a connetion between server and client.
 
 ## Reference
 
 1. [PB Usage in Go](https://www.jianshu.com/p/c1723e5f6a46)
+2. [Websocket in Go](https://www.jianshu.com/p/65ef71ddb910)
