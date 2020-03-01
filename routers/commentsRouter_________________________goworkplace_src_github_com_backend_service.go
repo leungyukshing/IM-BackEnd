@@ -15,9 +15,25 @@ func init() {
 			MethodParams: param.Make(),
 			Params: nil})
 
+	beego.GlobalControllerRouter["github.com/backend/service:ChatHandler"] = append(beego.GlobalControllerRouter["github.com/backend/service:ChatHandler"],
+		beego.ControllerComments{
+			Method: "CreateChat",
+			Router: `/`,
+			AllowHTTPMethods: []string{"post"},
+			MethodParams: param.Make(),
+			Params: nil})
+
 	beego.GlobalControllerRouter["github.com/backend/service:ContactHandler"] = append(beego.GlobalControllerRouter["github.com/backend/service:ContactHandler"],
 		beego.ControllerComments{
 			Method: "GetContactList",
+			Router: `/`,
+			AllowHTTPMethods: []string{"post"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/backend/service:ContactHandler"] = append(beego.GlobalControllerRouter["github.com/backend/service:ContactHandler"],
+		beego.ControllerComments{
+			Method: "AddContact",
 			Router: `/`,
 			AllowHTTPMethods: []string{"post"},
 			MethodParams: param.Make(),
@@ -42,6 +58,14 @@ func init() {
 	beego.GlobalControllerRouter["github.com/backend/service:TestHandler"] = append(beego.GlobalControllerRouter["github.com/backend/service:TestHandler"],
 		beego.ControllerComments{
 			Method: "Test",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/backend/service:WebSocketHandler"] = append(beego.GlobalControllerRouter["github.com/backend/service:WebSocketHandler"],
+		beego.ControllerComments{
+			Method: "SetUpWebsocket",
 			Router: `/`,
 			AllowHTTPMethods: []string{"get"},
 			MethodParams: param.Make(),

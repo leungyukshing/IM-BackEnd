@@ -4,6 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
 	im_entities "github.com/backend/im-protobuf/improto"
+	"github.com/backend/push"
 	"github.com/golang/protobuf/proto"
 	"github.com/sirupsen/logrus"
 )
@@ -28,6 +29,10 @@ type ChatHandler struct {
 	beego.Controller
 }
 
+type WebSocketHandler struct {
+	beego.Controller
+}
+
 // @Title Test
 // @router / [get]
 func (handler *TestHandler) Test() {
@@ -35,6 +40,17 @@ func (handler *TestHandler) Test() {
 	log := logger(ctx)
 	log.Info("Test start")
 	handler.Ctx.Output.Body([]byte("connection success"))
+}
+
+// @Title SetUpWebsocket
+// @router / [get]
+func (handler *WebSocketHandler) SetUpWebsocket()  {
+	ctx := *(handler.Ctx)
+	log := logger(ctx)
+	log.Info("SetUpWebsocket start")
+	push.SetUpWebsocket(ctx)
+	push.PushMessage(ctx)
+	handler.Ctx.Output.Body([]byte("set up websocket success"))
 }
 
 // @Title Login

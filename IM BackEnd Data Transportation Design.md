@@ -143,17 +143,13 @@ message:
 + DB Error: "DB_ERR"
 + Success: "GetContactList Success"
 
-### SendMessage
+### ChatMessage
 
 ```protobuf
-message SendMessageRequest {
+message ChatMessageRequest {
     optional string senderid = 1;
     optional string chatid = 2;
     optional string message =3;
-}
-
-message SendMessageResponse {
-    optional string code = 1;
 }
 ```
 
@@ -162,7 +158,43 @@ code:
 + 200: Request Succeed
 + 500: Server Database Error
 
-message:
+### PushMessage
+
+This is the struct of all push message, which is push by server.
+
+```protobuf
+enum MessageType {
+	CONTACT = 0;
+	CHAT = 1;
+}
+
+message PushMessage {
+	optional MessageType type = 1;
+	optional bytes content = 2;
+}
+```
+
+#### ContactPushMessage
+
+Server push a message to notify add contact event
+
+```protobuf
+message ContactPushMessage {
+	optional string senderid = 1;
+	optional string message = 2;
+}
+```
+
+#### ChatPushMessage
+
+Server push a mesage to notify create chat event
+
+```protobuf
+message ChatPushMessage {
+	optional string senderid = 1;
+	optional string chatid = 2;
+}
+```
 
 ### CreateChat
 
@@ -215,3 +247,4 @@ Use websocket to maintain a connetion between server and client.
 
 1. [PB Usage in Go](https://www.jianshu.com/p/c1723e5f6a46)
 2. [Websocket in Go](https://www.jianshu.com/p/65ef71ddb910)
+3. [Postwomen Socket Debug](https://zhuanlan.zhihu.com/p/98341280)

@@ -17,6 +17,9 @@ func init() {
 			beego.NSInclude(
 				&service.TestHandler{}),
 		),
+		beego.NSNamespace("/websocket",
+			beego.NSInclude(
+				&service.WebSocketHandler{})),
 		beego.NSNamespace("/register",
 			beego.NSInclude(
 				&service.RegisterHandler{}),
@@ -33,6 +36,12 @@ func init() {
 			beego.NSInclude(
 				&service.ContactHandler{}),
 		),
+		beego.NSNamespace("addContact",
+			beego.NSInclude(
+				&service.ContactHandler{})),
+		beego.NSNamespace("createChat",
+			beego.NSInclude(
+				&service.ChatHandler{})),
 	)
 	beego.AddNamespace(ns)
 }

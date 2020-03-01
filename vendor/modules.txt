@@ -1,8 +1,8 @@
 # github.com/astaxie/beego v1.9.2
 github.com/astaxie/beego
+github.com/astaxie/beego/context/param
 github.com/astaxie/beego/context
 github.com/astaxie/beego/config
-github.com/astaxie/beego/context/param
 github.com/astaxie/beego/grace
 github.com/astaxie/beego/logs
 github.com/astaxie/beego/session
@@ -16,6 +16,8 @@ github.com/gemnasium/logrus-graylog-hook
 github.com/go-sql-driver/mysql
 # github.com/golang/protobuf v1.3.2
 github.com/golang/protobuf/proto
+# github.com/gorilla/websocket v1.4.1
+github.com/gorilla/websocket
 # github.com/jinzhu/gorm v1.9.11
 github.com/jinzhu/gorm
 github.com/jinzhu/gorm/dialects/mysql
